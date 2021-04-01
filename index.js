@@ -31,11 +31,17 @@ app.post('/start', (request, response) => {
 app.post('/gather', (request, response) => {
   const twiml = new VoiceResponse()
 
+  twiml.pause()
+
   if (request.body.Digits) {
     switch (request.body.Digits) {
       case '1':
-        // TODO record message
-        twiml.say('Please remove me from your list. Goodbye.')
+        twiml.say("At the tone, please ree-chord your message.")
+        twiml.pause({length: 1})
+        twiml.play({}, 'https://mfodecdogsdhmbnlgmop.supabase.co/storage/v1/object/sign/product-images/tone.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9kdWN0LWltYWdlcy90b25lLm1wMyIsImlhdCI6MTYxNzI0OTMyNCwiZXhwIjoxOTMyNjA5MzI0fQ.dJCTzio3Gbsav_uZCulyDrMxbcAzMsSbsG4B7dBRzgA')
+        twiml.pause({length: 6})
+        twiml.play({}, 'https://mfodecdogsdhmbnlgmop.supabase.co/storage/v1/object/sign/product-images/tone.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9kdWN0LWltYWdlcy90b25lLm1wMyIsImlhdCI6MTYxNzI0OTMyNCwiZXhwIjoxOTMyNjA5MzI0fQ.dJCTzio3Gbsav_uZCulyDrMxbcAzMsSbsG4B7dBRzgA')
+        twiml.say('Thank you. Now, please remove me from your list. Goodbye.')
         twiml.hangup()
         break
 
